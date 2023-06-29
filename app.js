@@ -10,6 +10,7 @@ let titulo;
 let cantidad;
 let precio = 550;
 let costoTotal;
+let producto;
 
 nombre = prompt("¿Cómo es tu nombre?");
 console.log(nombre);
@@ -43,15 +44,56 @@ if (nombre != "") {
             }
           
     }
-    if (preferencias != "") {
-        titulo = prompt("Ingrese el titulo de la pelicula del cual quiera adquirir tickets");
-    } if (titulo !== "") {
-        cantidad = prompt("Ingrese la cantidad de entradas que desea comprar");
-    } if (cantidad !== "") {
-        alert("El costo a abonar es de: $" + precio * cantidad)
-    }
-
-    
+   
+        
 }else {
     alert("No ingreso los datos solicitados")
 }
+
+const carrito = [];
+
+function insertarProductosEnCarrito(producto) {
+    carrito.push(producto);
+}
+
+function cargarProductosEnCarrito() {
+let seguir;
+let producto;
+do {
+    producto = prompt("Ingrese el titulo de la pelicula del cual quiera adquirir tickets");
+    insertarProductosEnCarrito(producto);
+    seguir = prompt ("¿Desea agregar algo mas? Si/No")
+} while(seguir === "si");
+
+} if (producto !== "") {
+    cantidad = prompt("Ingrese la cantidad de entradas que desea comprar");
+} if (cantidad !== "") {
+    alert("El costo a abonar es de: $" + precio * cantidad)
+}
+
+function muestraCarrito() {
+    for (let i = 0; i < carrito.length; i++) {
+        console.log(carrito[i]);
+    }
+}
+
+
+
+function eliminarUnItemDelCarrito() {
+    let indice;
+    muestraCarrito();
+    indice = prompt("Elija el indice donde se encuentra el elemento que desea eliminar");
+    carrito.splice(indice,1);
+    alert("Elemento eliminado");
+    muestraCarrito();
+}
+
+cargarProductosEnCarrito();
+eliminarUnItemDelCarrito();
+
+
+
+
+
+
+
